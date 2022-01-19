@@ -21,7 +21,7 @@ spec:
       - image: docker.io/mineops/minecraft-server:prod
         imagePullPolicy: Always
         name: minecraft-server
-        hostNetwork: true
+        #hostNetwork: true
         ports:
         - name: minecraft
           containerPort: 25565
