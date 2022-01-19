@@ -284,10 +284,6 @@ spec:
       protocol: TCP
       targetPort: https
       appProtocol: https
-    - name: minecraft
-      port: 25565
-      protocol: TCP
-      targetPort: 25565
   selector:
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/instance: ingress-nginx
@@ -384,9 +380,8 @@ spec:
             - name: https
               containerPort: 443
               protocol: TCP
-            - name: minecraft
+            - hostPort: 25565
               containerPort: 25565
-              protocol: TCP
             - name: webhook
               containerPort: 8443
               protocol: TCP
