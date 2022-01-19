@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: cluster/ingress-nginx
+    path: config/ingress-nginx
     repoURL: git@github.com:kywa/kywa-argo.git
     targetRevision: master
   syncPolicy:
