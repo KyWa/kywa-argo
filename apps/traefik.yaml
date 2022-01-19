@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: traefik/traefik
+    chart: traefik
     repoURL: https://helm.traefik.io/traefik
     targetRevision: v10.9.1
   syncPolicy:
