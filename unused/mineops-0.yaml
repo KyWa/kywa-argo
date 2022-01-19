@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ingress-nginx
+  name: mineops-0
   namespace: argocd
 spec:
   destination:
-    namespace: ingress-nginx
+    namespace: mineops-0
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: cluster/features/ingress
+    path: services/mineops-0
     repoURL: git@github.com:kywa/kywa-argo.git
     targetRevision: master
   syncPolicy:

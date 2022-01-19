@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tekton
+  name: tekton-pipelines
   namespace: argocd
 spec:
   destination:
@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: applications/tekton
+    path: config/tekton-pipelines
     repoURL: git@github.com:kywa/kywa-argo.git
     targetRevision: master
   syncPolicy:

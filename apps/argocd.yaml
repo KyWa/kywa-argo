@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: applications/argocd
+    path: config/argocd
     repoURL: git@github.com:kywa/kywa-argo.git
     targetRevision: master
   syncPolicy:
