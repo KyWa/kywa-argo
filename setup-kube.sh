@@ -32,7 +32,7 @@ argoinstall(){
         echo "Vault File missing. Cannot decrypt initial repo \n"
         echo "Argo will be installed, but no repo will be created"
     else
-        ansible-vault decrypt argocd/02-argo-repo-secret.yaml --vault-password-file=~/.vault-pass
+        ansible-vault decrypt init-argo/02-argo-repo-secret.yaml --vault-password-file=~/.vault-pass
     fi
 
     ## Create argocd Namespace
@@ -68,4 +68,4 @@ echo ""
 echo "All manifests have been applied. Services should be live soon as it may take a moment to pull all images."
 echo ""
 
-git restore argocd/
+git restore init-argo/
