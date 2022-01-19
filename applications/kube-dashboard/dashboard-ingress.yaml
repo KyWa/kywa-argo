@@ -15,7 +15,7 @@ spec:
       - pathType: Prefix
         path: /
         backend:
-          service: 
+          service:
             name: kubernetes-dashboard
             port:
               number: 443
