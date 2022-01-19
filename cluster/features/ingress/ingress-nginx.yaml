@@ -21,6 +21,17 @@ metadata:
   namespace: ingress-nginx
 automountServiceAccountToken: true
 ---
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  labels:
+#    app.kubernetes.io/name: ingress-nginx
+#    app.kubernetes.io/instance: ingress-nginx
+#  name: tcp-services
+#  namespace: ingress-nginx
+#data:
+#  25565: "mineops-0/minecraft-server:25565"
+#---
 # Source: ingress-nginx/templates/controller-configmap.yaml
 apiVersion: v1
 kind: ConfigMap
@@ -273,6 +284,10 @@ spec:
       protocol: TCP
       targetPort: https
       appProtocol: https
+    - name: minecraft
+      port: 25565
+      protocol: TCP
+      targetPort: 25565
   selector:
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/instance: ingress-nginx
@@ -368,6 +383,9 @@ spec:
               protocol: TCP
             - name: https
               containerPort: 443
+              protocol: TCP
+            - name: minecraft
+              containerPort: 25565
               protocol: TCP
             - name: webhook
               containerPort: 8443
