@@ -30,7 +30,7 @@ metadata:
   name: tcp-services
   namespace: ingress-nginx
 data:
-  25565: "mineops-0/minecraft-server:25565"
+  25565: "mineops-0/mineops:25565"
 ---
 # Source: ingress-nginx/templates/controller-configmap.yaml
 apiVersion: v1
