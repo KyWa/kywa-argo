@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: code-server
+  namespace: argocd
+spec:
+  destination:
+    namespace: kywa
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: code-server
+    repoURL: https://github.com/kywa/kywa-ahoy
+    targetRevision: v0.1
+    helm:
+      parameters:
+      - name: "pvc.codeServer.storageRequest"
+        value: "10Gi"
+      - name: "codeServer.password"
+        value: "CHANGEME"
+      - name: "codeServer.codeServer.image.repository"
+        value: "quay.io/kywa/kcode"
+      - name: "codeServer.codeServer.image.tag"
+        value: "latest"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
