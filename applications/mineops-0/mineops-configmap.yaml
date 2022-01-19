@@ -1,6 +1,7 @@
 apiVersion: v1
 data:
   server.properties: |
+    debug=true
     enable-jmx-monitoring=false
     rcon.port=25575
     gamemode=survival
