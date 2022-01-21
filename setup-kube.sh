@@ -32,14 +32,14 @@ argoinstall(){
         echo "Vault File missing. Cannot decrypt initial repo \n"
         echo "Argo will be installed, but no repo will be created"
     else
-        ansible-vault decrypt init-argo/02-argo-repo-secret.yaml --vault-password-file=~/.vault-pass
+        ansible-vault decrypt init/argo/02-argo-repo-secret.yaml --vault-password-file=~/.vault-pass
     fi
 
     ## Create argocd Namespace
     kubectl create namespace argocd
 
     ## Applying ArgoCD manifests
-    if kubectl apply -n argocd -f init-argo/;then
+    if kubectl apply -n argocd -f init/argo/;then
         echo "Installing ArgoCD"
     else
         echo "unable to apply manifest, check configs"
@@ -59,7 +59,7 @@ argopostinstall(){
 
 ingressinstall(){
     ## Applying ingress-nginx manifest
-    if kubectl apply -f init-argo/00-ingress-nginx.yaml;then
+    if kubectl apply -f init/00-ingress-nginx.yaml;then
         echo "Installing ingress-nginx manifests"
     else
         echo "unable to apply manifest, check configs"
@@ -81,4 +81,4 @@ echo ""
 echo "All manifests have been applied. Services should be live soon as it may take a moment to pull all images."
 echo ""
 
-git restore init-argo/
+git restore init/argo/
