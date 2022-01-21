@@ -2,27 +2,19 @@
 
 ## Check OS
 ## TODO add in functionality for bash call (Mac using /usr/local/bin/bash all others use symlink to /bin/bash)
-if [ -f /etc/os-release ];then
-    echo "This installer is only meant for setup of Kubernetes running on Mac OSX using docker-desktop"
-    exit
-fi
+#if [ -f /etc/os-release ];then
+#    echo "This installer is only meant for setup of Kubernetes running on Mac OSX using docker-desktop"
+#    exit
+#fi
 
-### Verify kubernetes is running
-checkpods=`docker ps | grep kube-scheduler`
+#### Verify kubernetes is running
+checkpods=`kubectl get po -A | grep kube-scheduler`
 if [[ $checkpods = "" ]];then
     echo "Kubernetes isn't running"
     exit
 else
     echo "Installing manifests to setup cluster"
     echo ""
-fi
-
-### Set context for docker-desktop
-if kubectl config use-context docker-desktop;then
-    echo "context set to docker-desktop"
-else
-    echo "context not set, check config"
-    exit
 fi
 
 ## Functions
@@ -57,19 +49,11 @@ argopostinstall(){
     fi
 }
 
-ingressinstall(){
-    ## Applying ingress-nginx manifest
-    if kubectl apply -f init/00-ingress-nginx.yaml;then
-        echo "Installing ingress-nginx manifests"
-    else
-        echo "unable to apply manifest, check configs"
-        exit
-    fi
-}
-
 ## Main
+
+#ingressinstall
 echo "Installing Ingress"
-ingressinstall
+minikube addons enable ingress
 
 echo "Beginning ArgoCD Bootstrap"
 argoinstall
