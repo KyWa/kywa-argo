@@ -57,7 +57,20 @@ argopostinstall(){
     fi
 }
 
+ingressinstall(){
+    ## Applying ingress-nginx manifest
+    if kubectl apply -f init-argo/00-ingress-nginx.yaml;then
+        echo "Installing ingress-nginx manifests"
+    else
+        echo "unable to apply manifest, check configs"
+        exit
+    fi
+}
+
 ## Main
+echo "Installing Ingress"
+ingressinstall
+
 echo "Beginning ArgoCD Bootstrap"
 argoinstall
 
