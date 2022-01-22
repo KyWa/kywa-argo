@@ -53,7 +53,7 @@ argopostinstall(){
 
 #ingressinstall
 echo "Installing Ingress"
-minikube addons enable ingress
+#minikube addons enable ingress
 
 echo "Beginning ArgoCD Bootstrap"
 argoinstall
