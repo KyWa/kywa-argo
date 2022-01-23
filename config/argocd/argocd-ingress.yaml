@@ -20,7 +20,6 @@ spec:
               name: argocd-server
               port:
                 name: https
-                  #  tls:
-                  #  - hosts:
-                  #    - argo.kywa.io
-                  #    secretName: argocd-secret
+  tls:
+  - hosts:
+    - argo.kywa.io
