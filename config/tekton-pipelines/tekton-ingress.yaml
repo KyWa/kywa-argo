@@ -17,3 +17,6 @@ spec:
             name: tekton-dashboard
             port:
               number: 9097
+  tls:
+  - hosts:
+    - tekton.kywa.io
