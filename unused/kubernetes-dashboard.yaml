@@ -11,7 +11,7 @@ spec:
   source:
     path: config/kubernetes-dashboard
     repoURL: git@github.com:kywa/kywa-argo.git
-    targetRevision: master
+    targetRevision: haproxy-ingress
   syncPolicy:
     automated:
       prune: true
