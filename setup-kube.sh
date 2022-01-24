@@ -8,7 +8,7 @@
 #fi
 
 #### Verify kubernetes is running
-checkpods=`kubectl get po -A | grep kube-scheduler`
+checkpods=`kubectl get po -A | grep kube`
 if [[ $checkpods = "" ]];then
     echo "Kubernetes isn't running"
     exit
