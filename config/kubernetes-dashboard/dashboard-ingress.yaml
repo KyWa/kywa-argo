@@ -19,3 +19,6 @@ spec:
             name: kubernetes-dashboard
             port:
               number: 443
+  tls:
+  - hosts:
+    - kube.kywa.io

@@ -23,4 +23,3 @@ spec:
   tls:
   - hosts:
     - argo.kywa.io
-    secretName: argocd-secret

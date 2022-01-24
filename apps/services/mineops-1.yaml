@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ingress-traefik
+  name: mineops-1
   namespace: argocd
 spec:
   destination:
-    namespace: traefik-v2
+    namespace: mineops-1
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: traefik
-    repoURL: https://helm.traefik.io/traefik
-    targetRevision: v10.9.1
+    path: services/mineops-1
+    repoURL: git@github.com:kywa/kywa-argo.git
+    targetRevision: master
   syncPolicy:
     automated:
       prune: true
