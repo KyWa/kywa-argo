@@ -38,7 +38,7 @@ spec:
         image: busybox
         command: ["/bin/chmod","-R","777", "/minecraft"]
         volumeMounts:
-        - name: mineops
+        - name: minecraft-data
           mountPath: /minecraft
       volumes:
       - name: minecraft-data
