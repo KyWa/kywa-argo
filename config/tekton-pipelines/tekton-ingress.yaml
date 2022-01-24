@@ -4,7 +4,7 @@ metadata:
   name: tekton-dashboard
   namespace: tekton-pipelines
   annotations:
-    kubernetes.io/ingress.class: haproxy
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
   - host: "tekton.kywa.io"
@@ -17,6 +17,3 @@ spec:
             name: tekton-dashboard
             port:
               number: 9097
-  tls:
-  - hosts:
-    - tekton.kywa.io

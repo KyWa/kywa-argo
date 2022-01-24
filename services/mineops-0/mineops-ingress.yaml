@@ -3,9 +3,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: minecraft-server
-  namespace: mineops-1
+  namespace: mineops-0
   annotations:
-    kubernetes.io/ingress.class: haproxy
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
   - host: "mineops.kywa.io"
