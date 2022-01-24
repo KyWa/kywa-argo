@@ -33,6 +33,13 @@ spec:
           subPath: server.properties
           name: server-properties
       serviceAccount: mineops
+      initContainers:
+      - name: data-permission-fix
+        image: busybox
+        command: ["/bin/chmod","-R","777", "/minecraft"]
+        volumeMounts:
+        - name: mineops
+          mountPath: /minecraft
       volumes:
       - name: minecraft-data
         persistentVolumeClaim:
