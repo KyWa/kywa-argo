@@ -32,7 +32,7 @@ spec:
         - mountPath: /minecraft/server.properties
           subPath: server.properties
           name: server-properties
-        serviceAccount: mineops
+      serviceAccount: mineops
       volumes:
       - name: minecraft-data
         persistentVolumeClaim:
