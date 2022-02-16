@@ -1,3 +1,10 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mineops
+  namespace: mineops-0
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
