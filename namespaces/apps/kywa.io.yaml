@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kywa.io
+  namespace: argocd
+spec:
+  destination:
+    namespace: kywa.io
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: namespaces/kywa.io
+    repoURL: git@github.com:kywa/kywa-argo.git
+    targetRevision: master
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
