@@ -3585,6 +3585,7 @@ spec:
       containers:
       - command:
         - argocd-server
+        - --insecure
         env:
         - name: ARGOCD_SERVER_INSECURE
           valueFrom:
