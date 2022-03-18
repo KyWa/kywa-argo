@@ -1,0 +1,50 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  labels:
+    machine.openshift.io/cluster-api-cluster: okd-47jh7
+    machine.openshift.io/cluster-api-machine-role: worker
+    machine.openshift.io/cluster-api-machine-type: worker
+  name: okd-47jh7-worker
+  namespace: openshift-machine-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: okd-47jh7
+      machine.openshift.io/cluster-api-machineset: okd-47jh7-worker
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: okd-47jh7
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: okd-47jh7-worker
+    spec:
+      lifecycleHooks: {}
+      metadata: {}
+      providerSpec:
+        value:
+          affinity_groups_names:
+          - okd-47jh7-compute
+          apiVersion: ovirtproviderconfig.machine.openshift.io/v1beta1
+          auto_pinning_policy: none
+          cluster_id: fc5cde98-844e-11ec-91b7-00163e6ed550
+          cpu:
+            cores: 1
+            sockets: 4
+            threads: 1
+          credentialsSecret:
+            name: ovirt-credentials
+          id: ""
+          kind: OvirtMachineProviderSpec
+          memory_mb: 16384
+          metadata:
+            creationTimestamp: null
+          name: ""
+          os_disk:
+            size_gb: 120
+          template_name: okd-47jh7-rhcos
+          type: server
+          userDataSecret:
+            name: worker-user-data
